@@ -15,3 +15,4 @@ This is a simple implementation of the Logical Clock proposed here.
 - [ ] Distributed Mutex Example (maybe with deterministic simulation)
 - [ ] Vector Clock
 - [ ] Better tests
+- [ ] Add a Mutex for concurrent access?

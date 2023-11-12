@@ -24,6 +24,16 @@ func TestLogicalClock_Update(t *testing.T) {
 		// Ensure that for a lower timestamp recieved, the event is recieved, but the timestamp is not updated
 		{"Basic test -> Unsuccessful Update", fields{2, 0}, args{&LogicalClock{1, 0}}, 3, false},
 
+		// Ensure that monotonicity is maintained at init
+		// This is expecting an error because the previous time cannot be greater than the current time
+		{
+			"Basic test -> Check to ensure Monotonicity",
+			fields{0, 2}, // here is the non-monotonicity
+			args{&LogicalClock{1, 0}},
+			0,
+			true,
+		},
+
 		// TODO add more tests
 	}
 	for _, tt := range tests {
